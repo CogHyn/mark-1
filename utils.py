@@ -15,7 +15,7 @@ def load_model():
     model = VideoLLM(**config["model"])
     from huggingface_hub import hf_hub_download
 
-    FILENAME = "checkpoint_last_v4.pt" 
+    FILENAME = "checkpoint_last_v3.pt" 
     REPO_ID = "CogHyn/VideoLLM"
 
     local_checkpoint_path = hf_hub_download(
