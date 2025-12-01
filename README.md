@@ -88,7 +88,7 @@ While the Projection Architecture successfully converges and learns to map visua
 
 ```bash
 # Clone the repository
-git clone https://github.com/YourUsername/Mark-1.git
+git clone git@github.com:CogHyn/mark-1.git
 cd Mark-1
 
 python -m venv .venv
