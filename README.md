@@ -22,8 +22,8 @@
         "B. Rẽ phải, và tiếp tục đi thằng.",
         "C. Chuẩn bị rẽ trái, D. Đi 300m nữa rẽ trái.",
     ],
-    "ground_truth": "C. Chuẩn bị rẽ trái, D. Đi 300m nữa rẽ trái.",
-    "mark-1_response": "B. Rẽ phải, và tiếp tục đi thằng.",
+    "ground_truth": "C. Chuẩn bị rẽ trái",
+    "mark-1_response": "A. Đi thẳng, rẽ trái",
 }
 ```
 
