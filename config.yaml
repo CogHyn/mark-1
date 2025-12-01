@@ -1,0 +1,66 @@
+version: "v1"
+
+model:
+  video_repo: "facebook/vjepa2-vitg-fpc64-256"
+  llm_repo: "Qwen/Qwen3-0.6B"
+  projection_config:
+    num_visual_token: 32
+    num_temporal_token: 5
+    video_seq_len: 256
+    embed_dim_video: 1408
+    text_seq_len: 12
+    embed_dim_text: 1024
+    num_heads: 8
+    num_res_blocks: 2
+    bert_config:
+      hidden_size: 1024   
+      num_attention_heads: 16
+      intermediate_size: 4096    
+      num_hidden_layers: 2 
+    number_of_frames: 16
+  device_map:
+    video: "cuda:0"
+    llm: "cuda:1"
+    projection: "cuda:0"
+  
+
+training:
+  dataset:
+    root_dir: "./traffic_buddy_train+public_test"
+    train_dir: "train"
+    anno_file: "train.json"
+  dataloader:
+    batch_size: 4
+    num_workers: 2
+    pin_memory: True
+    drop_last: True
+    persistent_workers: True 
+  num_epochs: 5
+  batch_size: 4
+  lr: 5.0e-5
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  pos_weight: 10.0
+  lambda_temp: 2.0
+
+eval: 
+    dataset:
+    root_dir: "./traffic_buddy_train+public_test"
+    eval_dir: "eval"
+    anno_file: "eval.json"
+  dataloader:
+    batch_size: 4
+    num_workers: 2
+    pin_memory: True
+    drop_last: True
+    persistent_workers: True 
+
+system:
+
+  num_workers: 4
+
+video:
+  number_of_frames: 16
+  fps: 30
+
+sample_model: "./sample_model/checkpoint_last_v4.pt"
